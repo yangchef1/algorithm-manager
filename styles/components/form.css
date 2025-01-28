@@ -1,0 +1,17 @@
+#algorithm-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem 0;
+}
+
+.input-hint {
+  margin: 4px;
+  color: grey;
+}
