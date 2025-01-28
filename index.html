@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/components/form.css" />
+    <link rel="stylesheet" href="styles/components/range.css" />
+    <link rel="stylesheet" href="styles/components/select.css" />
+    <title>Algorithm Manager</title>
+  </head>
+  <body>
+    <header>
+      <h1>Algorithm Manager</h1>
+    </header>
+
+    <main>
+      <form id="algorithm-form">
+        <div class="input-group">
+          <input
+            type="text"
+            id="notion-api-token-input"
+            class="input-field"
+            placeholder="Notion API 토큰을 입력해주세요."
+            required
+          />
+          <small class="input-hint">예: asdjnqldms9oij2k3</small>
+        </div>
+
+        <div class="input-group">
+          <input
+            type="text"
+            id="notion-database-link-input"
+            class="input-field"
+            placeholder="Notion 데이터베이스 페이지 URL을 입력해주세요."
+            required
+          />
+          <small class="input-hint">
+            예:
+            https://www.notion.so/188a9adcc7c08032820bcd909ijsw28d?v=188a9adcc7c080b78dec000c287b965a
+          </small>
+        </div>
+
+        <button type="submit" id="submit-button" class="submit-btn">
+          확인
+        </button>
+      </form>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
