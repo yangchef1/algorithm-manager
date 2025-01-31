@@ -29,7 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     placeholder: "저장할 문제 수를 선택해주세요.",
   });
 
-  const submitButton = new Button("submit", "확인");
+  const submitButton = new Button(
+    "submit",
+    "확인",
+    "submit-btn",
+    "submit-button"
+  );
+  const startButton = new Button(
+    "button",
+    "문제 추출 시작",
+    "start-btn",
+    "start-button"
+  );
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -41,8 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .getElementById("notion-database-link-input")
       .value.trim();
 
+    const databaseId = new URL(databaseUrl).pathname.split("/")[1];
     sessionStorage.setItem("notionApiToken", notionToken);
-    sessionStorage.setItem("notionDatabaseUrl", databaseUrl);
+    sessionStorage.setItem("notionDatabaseId", databaseId);
 
     const additionalForm = document.createElement("form");
     additionalForm.id = "additional-form";
@@ -59,8 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
     additionalForm.appendChild(
       InputWrapper.wrap(numberSelect.render(), "저장할 문제 수를 선택해주세요.")
     );
-    console.log(submitButton.render());
+
     additionalForm.appendChild(submitButton.render());
+    additionalForm.appendChild(startButton.render());
 
     main.innerHTML = additionalForm.outerHTML;
 

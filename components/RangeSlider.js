@@ -1,4 +1,4 @@
-import { TIER_IMAGE_BASE_URL } from "../constants/config.js";
+import { TIER_IMAGE_BASE_URL } from "../constants/url.js";
 
 export class RangeSlider {
   constructor({ id, min, max }) {
@@ -20,8 +20,8 @@ export class RangeSlider {
         <div class="range-handle" id="end-handle"></div>
       </div>
       <div style="display: flex; justify-content: space-between;">
-        <img id="start-tier-image" class="tier-image" src="${TIER_IMAGE_BASE_URL}/${this.min}.svg" alt="Start Tier" width="20" />
-        <img id="end-tier-image" class="tier-image" src="${TIER_IMAGE_BASE_URL}/${this.max}.svg" alt="End Tier" width="20" />
+        <img id="start-tier-image" class="tier-image" src="${TIER_IMAGE_BASE_URL}${this.min}.svg" alt="Start Tier" width="20" />
+        <img id="end-tier-image" class="tier-image" src="${TIER_IMAGE_BASE_URL}${this.max}.svg" alt="End Tier" width="20" />
       </div>
     `;
 
