@@ -1,23 +1,37 @@
-const algorithmMap = {
-  5: "백트래킹",
-  25: "DP",
-  33: "그리디",
-  97: "정렬",
-  102: "구현",
-  124: "수학",
-  125: "완전 탐색",
-  126: "BFS",
-  127: "DFS",
-  175: "자료구조",
+export const algorithmMap = {
+  backtracking: "백트래킹",
+  dp: "DP",
+  greedy: "그리디",
+  sorting: "정렬",
+  implementation: "구현",
+  math: "수학",
+  bruteforcing: "완전 탐색",
+  bfs: "BFS",
+  dfs: "DFS",
+  data_structures: "자료구조",
 };
 
-export const ALGORITHM_OPTIONS = Object.entries(algorithmMap)
-  .map(([value, label]) => ({ value: parseInt(value), label }))
-  .sort((a, b) => a.id - b.id);
+const tiers = ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby"];
+const romanNumerals = ["I", "II", "III", "IV", "V"];
+
+export const TIER_COLOR = ["brown", "gray", "yellow", "purple", "blue", "red"];
+
+export const LEVEL = Object.fromEntries(
+  Array.from({ length: 30 }, (_, i) => {
+    const level = i + 1;
+
+    const tierIndex = Math.floor((level - 1) / 5);
+    const romanIndex = (level - 1) % 5;
+
+    return [level, tiers[tierIndex] + romanNumerals[romanIndex]];
+  })
+);
+
+export const ALGORITHM_OPTIONS = Object.entries(algorithmMap).map(
+  ([value, label]) => ({ value, label })
+);
 
 export const PROBLEM_COUNT_OPTIONS = Array.from({ length: 100 }, (_, i) => ({
   value: String(i + 1),
   label: String(i + 1),
 }));
-
-export const TIER_IMAGE_BASE_URL = "https://d2gd6pc034wcta.cloudfront.net/tier";
