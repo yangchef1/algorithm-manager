@@ -1,4 +1,5 @@
-import { TIER_IMAGE_BASE_URL } from "../constants/config.js";
+import { TIER_IMAGE_BASE_URL } from "../constants/url.js";
+import { BojProblemFetcher } from "../core/crawler/BojProblemFetcher.js";
 
 export function initializeAdditionalForm() {
   let rangeStart = 1;
@@ -12,8 +13,8 @@ export function initializeAdditionalForm() {
   const endTierImage = document.getElementById("end-tier-image");
 
   function updateTierImages(start, end) {
-    startTierImage.src = `${TIER_IMAGE_BASE_URL}/${start}.svg`;
-    endTierImage.src = `${TIER_IMAGE_BASE_URL}/${end}.svg`;
+    startTierImage.src = `${TIER_IMAGE_BASE_URL}${start}.svg`;
+    endTierImage.src = `${TIER_IMAGE_BASE_URL}${end}.svg`;
   }
 
   function updateRange(handle, value) {
@@ -69,6 +70,7 @@ export function initializeAdditionalForm() {
     console.log("Additional form submitted");
 
     const selectedAlgorithm = document.getElementById("algorithm-select").value;
+    console.log(document.getElementById("algorithm-select").value);
     const selectedNumber = document.getElementById("number-select").value;
 
     if (!selectedAlgorithm || !selectedNumber) {
@@ -82,5 +84,21 @@ export function initializeAdditionalForm() {
     sessionStorage.setItem("selectedNumber", selectedNumber);
 
     alert("모든 선택이 완료되었습니다.");
+  });
+
+  const startButton = document.getElementById("start-button");
+  startButton.addEventListener("click", () => {
+    const selectedAlgorithm = sessionStorage.getItem("selectedAlgorithm");
+    const rangeStart = sessionStorage.getItem("rangeStart");
+    const rangeEnd = sessionStorage.getItem("rangeEnd");
+    const selectedNumber = sessionStorage.getItem("selectedNumber");
+
+    const problemFetcher = new BojProblemFetcher();
+    problemFetcher.fetchProblems(
+      selectedAlgorithm,
+      rangeStart,
+      rangeEnd,
+      selectedNumber
+    );
   });
 }
