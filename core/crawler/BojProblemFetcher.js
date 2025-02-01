@@ -8,7 +8,6 @@ export class BojProblemFetcher {
   }
 
   async fetchProblems(tag, startLevel, endLevel, number) {
-    console.log("start");
     const response = await fetch(PROXY_URL, {
       method: "POST",
       headers: {
@@ -22,11 +21,9 @@ export class BojProblemFetcher {
       }),
     });
     const data = await response.json();
-    console.log(data.items.length);
     const notionProperties = data.items.map((item) =>
       NotionPropertiesDTO.of(item)
     );
-    console.log(notionProperties);
 
     await this.notionDatabaseManager.setSchema();
 
