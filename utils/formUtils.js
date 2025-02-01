@@ -106,6 +106,7 @@ export function initializeAdditionalForm() {
         );
 
         loadingSpinner.hide();
+        alert("문제 추출이 완료되었습니다.");
       }
     );
     modal.open();
