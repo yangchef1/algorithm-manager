@@ -8,6 +8,25 @@ body {
   margin: 0;
 }
 
+footer {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  background-color: #2a3d66;
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
+a:hover {
+  background-color: #1a2d44;
+  color: white;
+}
+
 h1 {
   color: #2a3d66;
   font-size: 50px;
