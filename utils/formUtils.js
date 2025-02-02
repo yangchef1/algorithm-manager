@@ -7,6 +7,9 @@ export function initializeAdditionalForm() {
   let rangeStart = 1;
   let rangeEnd = 30;
 
+  const problemFetcher = new BojProblemFetcher();
+  problemFetcher.setDatabase();
+
   const track = document.querySelector(".range-track");
   const fill = document.querySelector(".range-fill");
   const startHandle = document.getElementById("start-handle");
@@ -97,7 +100,6 @@ export function initializeAdditionalForm() {
         loadingSpinner.show();
         main.appendChild(loadingSpinner.render());
 
-        const problemFetcher = new BojProblemFetcher();
         await problemFetcher.saveProblemsToNotion(
           selectedAlgorithm,
           rangeStart,

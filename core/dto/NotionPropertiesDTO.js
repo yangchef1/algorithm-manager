@@ -4,7 +4,7 @@ import { BOJ_PROBLEM_URL } from "../../constants/url.js";
 export class NotionPropertiesDTO {
   constructor(problemId, level, name, algorithmTags) {
     this.problemId = problemId;
-    this.level = level;
+    this.level = String(level);
     this.name = name;
     this.algorithmTags = algorithmTags
       .filter((tag) => tag in algorithmMap)

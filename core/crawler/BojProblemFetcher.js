@@ -21,11 +21,13 @@ export class BojProblemFetcher {
 
     const notionProperties = filteredItems.map(NotionPropertiesDTO.of);
 
-    await this.notionDatabaseManager.setSchema();
-
     for (const properties of notionProperties) {
       await this.notionDatabaseManager.addProblem(properties);
     }
+  }
+
+  async setDatabase() {
+    await this.notionDatabaseManager.setSchema();
   }
 
   #filterProblems(items, number) {
