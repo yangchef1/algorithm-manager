@@ -27,8 +27,6 @@ export class NotionDatabaseManager {
         },
       }),
     });
-
-    await sleep(500);
   }
 
   async setSchema() {
@@ -47,7 +45,6 @@ export class NotionDatabaseManager {
           "Notion-Version": "2022-06-28",
         },
         body: {
-          parent: { database_id: sessionStorage.getItem("notionDatabaseId") },
           properties: {
             알고리즘: {
               multi_select: {},
@@ -65,7 +62,7 @@ export class NotionDatabaseManager {
               date: {},
             },
             비고: {
-              text: {},
+              rich_text: {},
             },
           },
         },

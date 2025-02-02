@@ -23,7 +23,7 @@ export const LEVEL = Object.fromEntries(
     const tierIndex = Math.floor((level - 1) / 5);
     const romanIndex = (level - 1) % 5;
 
-    return [level, tiers[tierIndex] + romanNumerals[romanIndex]];
+    return [level, tiers[tierIndex] + " " + romanNumerals[romanIndex]];
   })
 );
 

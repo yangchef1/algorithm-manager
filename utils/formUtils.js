@@ -88,8 +88,8 @@ export function initializeAdditionalForm() {
       "선택한 알고리즘과 난이도로 문제를 추출합니다.",
       async () => {
         const selectedAlgorithm = sessionStorage.getItem("selectedAlgorithm");
-        const rangeStart = sessionStorage.getItem("rangeStart");
-        const rangeEnd = sessionStorage.getItem("rangeEnd");
+        const rangeStart = Number(sessionStorage.getItem("rangeStart"));
+        const rangeEnd = Number(sessionStorage.getItem("rangeEnd"));
         const selectedNumber = sessionStorage.getItem("selectedNumber");
         modal.close();
 
@@ -98,7 +98,7 @@ export function initializeAdditionalForm() {
         main.appendChild(loadingSpinner.render());
 
         const problemFetcher = new BojProblemFetcher();
-        await problemFetcher.fetchProblems(
+        await problemFetcher.saveProblemsToNotion(
           selectedAlgorithm,
           rangeStart,
           rangeEnd,
