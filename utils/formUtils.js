@@ -1,3 +1,5 @@
+import { LoadingSpinner } from "../components/LoadingSpinner.js";
+import { Modal } from "../components/Modal.js";
 import { TIER_IMAGE_BASE_URL } from "../constants/url.js";
 import { BojProblemFetcher } from "../core/crawler/BojProblemFetcher.js";
 
@@ -64,13 +66,10 @@ export function initializeAdditionalForm() {
   });
 
   const additionalForm = document.getElementById("additional-form");
-  console.log(additionalForm);
   additionalForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Additional form submitted");
 
     const selectedAlgorithm = document.getElementById("algorithm-select").value;
-    console.log(document.getElementById("algorithm-select").value);
     const selectedNumber = document.getElementById("number-select").value;
 
     if (!selectedAlgorithm || !selectedNumber) {
@@ -83,22 +82,34 @@ export function initializeAdditionalForm() {
     sessionStorage.setItem("rangeEnd", rangeEnd);
     sessionStorage.setItem("selectedNumber", selectedNumber);
 
-    alert("모든 선택이 완료되었습니다.");
-  });
+    const main = document.querySelector("main");
 
-  const startButton = document.getElementById("start-button");
-  startButton.addEventListener("click", () => {
-    const selectedAlgorithm = sessionStorage.getItem("selectedAlgorithm");
-    const rangeStart = sessionStorage.getItem("rangeStart");
-    const rangeEnd = sessionStorage.getItem("rangeEnd");
-    const selectedNumber = sessionStorage.getItem("selectedNumber");
+    const modal = new Modal(
+      "선택한 알고리즘과 난이도로 문제를 추출합니다.",
+      async () => {
+        const selectedAlgorithm = sessionStorage.getItem("selectedAlgorithm");
+        const rangeStart = sessionStorage.getItem("rangeStart");
+        const rangeEnd = sessionStorage.getItem("rangeEnd");
+        const selectedNumber = sessionStorage.getItem("selectedNumber");
+        modal.close();
 
-    const problemFetcher = new BojProblemFetcher();
-    problemFetcher.fetchProblems(
-      selectedAlgorithm,
-      rangeStart,
-      rangeEnd,
-      selectedNumber
+        const loadingSpinner = new LoadingSpinner();
+        loadingSpinner.show();
+        main.appendChild(loadingSpinner.render());
+
+        const problemFetcher = new BojProblemFetcher();
+        await problemFetcher.fetchProblems(
+          selectedAlgorithm,
+          rangeStart,
+          rangeEnd,
+          selectedNumber
+        );
+
+        loadingSpinner.hide();
+        alert("문제 추출이 완료되었습니다.");
+      }
     );
+    modal.open();
+    main.appendChild(modal.render());
   });
 }

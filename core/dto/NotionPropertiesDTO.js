@@ -19,7 +19,6 @@ export class NotionPropertiesDTO {
 
     const { problemId, level, titleKo, tags } = item;
     const tagKeys = tags.map((tag) => tag.key);
-    console.log(tagKeys);
     return new NotionPropertiesDTO(problemId, level, titleKo, tagKeys);
   }
 

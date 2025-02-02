@@ -35,12 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "submit-btn",
     "submit-button"
   );
-  const startButton = new Button(
-    "button",
-    "문제 추출 시작",
-    "start-btn",
-    "start-button"
-  );
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -73,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     additionalForm.appendChild(submitButton.render());
-    additionalForm.appendChild(startButton.render());
 
     main.innerHTML = additionalForm.outerHTML;
 
