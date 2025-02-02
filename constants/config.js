@@ -31,7 +31,7 @@ export const ALGORITHM_OPTIONS = Object.entries(algorithmMap).map(
   ([value, label]) => ({ value, label })
 );
 
-export const PROBLEM_COUNT_OPTIONS = Array.from({ length: 100 }, (_, i) => ({
-  value: String(i + 1),
-  label: String(i + 1),
+export const PROBLEM_COUNT_OPTIONS = Array.from({ length: 20 }, (_, i) => ({
+  value: String((i + 1) * 5),
+  label: String((i + 1) * 5),
 }));
