@@ -3,7 +3,6 @@ import {
   NOTION_PAGE_URL,
   PROXY_URL,
 } from "../../constants/url.js";
-import { sleep } from "../../utils/sleep.js";
 
 export class NotionDatabaseManager {
   constructor() {}

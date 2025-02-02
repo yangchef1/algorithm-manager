@@ -1,5 +1,4 @@
 import { PROXY_URL, SOLVED_AC_URL } from "../../constants/url.js";
-import { sleep } from "../../utils/sleep.js";
 import { NotionPropertiesDTO } from "../dto/NotionPropertiesDTO.js";
 import { NotionDatabaseManager } from "../notion/NotionDatabaseManager.js";
 
@@ -20,9 +19,7 @@ export class BojProblemFetcher {
 
     const filteredItems = this.#filterProblems(allItems, number);
 
-    const notionProperties = filteredItems.map((item) =>
-      NotionPropertiesDTO.of(item)
-    );
+    const notionProperties = filteredItems.map(NotionPropertiesDTO.of);
 
     await this.notionDatabaseManager.setSchema();
 

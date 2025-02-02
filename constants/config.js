@@ -12,7 +12,7 @@ export const algorithmMap = {
 };
 
 const tiers = ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby"];
-const romanNumerals = ["I", "II", "III", "IV", "V"];
+const romanNumerals = ["V", "IV", "III", "II", "I"];
 
 export const TIER_COLOR = ["brown", "gray", "yellow", "purple", "blue", "red"];
 
