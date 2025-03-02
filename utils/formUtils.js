@@ -100,6 +100,8 @@ export function initializeAdditionalForm() {
         loadingSpinner.show();
         main.appendChild(loadingSpinner.render());
 
+        await problemFetcher.setDatabase();
+
         await problemFetcher.saveProblemsToNotion(
           selectedAlgorithm,
           rangeStart,
